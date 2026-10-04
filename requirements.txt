@@ -1,9 +1,9 @@
 Flask
 Flask-Cors
 gunicorn
-duckdb
+duckdb==1.0.0
 python-dotenv
 PyJWT
 requests
-pandas
+pandas==2.2.0
 openai
