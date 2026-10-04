@@ -1,0 +1,21 @@
+# ==============================================================================
+# CONFIGURACIÓN CLOUDFLARE TUNNEL ~/.cloudflared/config.yml
+# ==============================================================================
+tunnel: audit-trial
+credentials-file: /root/.cloudflared/audit-trial.json
+
+ingress:
+  # Enlace exacto solicitado para el sistema de prueba de 3 días
+  - hostname: audit-intelligence-usa.com/trial
+    service: http://localhost:5000
+
+  # Dominio principal hacia el backend
+  - hostname: audit-intelligence-usa.com
+    service: http://localhost:5000
+
+  # Subdominio alternativo directo
+  - hostname: trial.audit-intelligence-usa.com
+    service: http://localhost:5000
+
+  # Captura de errores
+  - service: http_status:404
