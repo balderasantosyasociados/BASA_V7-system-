@@ -1,1 +1,12 @@
-
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+.venv
+*.db
+*.duckdb
+.DS_Store
+instance/
