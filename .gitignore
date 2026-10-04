@@ -5,8 +5,10 @@ __pycache__/
 .env
 venv/
 env/
-.venv
+.venv/
 *.db
 *.duckdb
 .DS_Store
 instance/
+croma.sqlite3
+clientes.json
