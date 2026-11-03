@@ -1,0 +1,28 @@
+import requests
+
+class BASAIntelligenceClient:
+    def __init__(self, base_url: str = "http://127.0.0.1:8000", api_key: str = "TU_CLAVE_SECRETA_AUDIT_USA_2026"):
+        self.base_url = base_url
+        self.headers = {
+            "X-API-Key": api_key,
+            "Content-Type": "application/json"
+        }
+
+    def consultar_analisis_forense(self, rnc_cedula: str, tipo_proceso: str = "DGCP"):
+        url = f"{self.base_url}/api/v1/auditoria/analizar-entidad"
+        payload = {
+            "rnc_cedula": rnc_cedula,
+            "tipo_proceso": tipo_proceso
+        }
+        
+        try:
+            response = requests.post(url, json=payload, headers=self.headers, timeout=10)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            return {"status": "error", "message": str(e)}
+
+# Ejemplo de uso en Audit Intelligence USA:
+# cliente = BASAIntelligenceClient()
+# resultado = cliente.consultar_analisis_forense("133378711", "DGCP")
+# print(resultado)
